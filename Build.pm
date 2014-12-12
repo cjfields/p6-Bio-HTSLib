@@ -6,7 +6,7 @@ use LibraryMake;
 
 class Build is Panda::Builder {
     method build($dir) {
-        my Str $ext = "$dir/src/htslib";
+        my Str $ext = "$dir/src";
         my Str $blib = "$dir/blib";
         rm_rf($blib);
         mkdir($blib);
