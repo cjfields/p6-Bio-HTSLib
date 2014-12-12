@@ -1,0 +1,4 @@
+all: libhts
+
+libhts: 
+	cd htslib; make
