@@ -9,6 +9,6 @@ use Bio::HTSLib::Library;
 class Bio::HTSLib;
     
 method install-library {
-    return library();
+    return Bio::HTSLib::Library::library();
 }
     

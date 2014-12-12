@@ -1,5 +1,6 @@
 use v6;
 use Test;
+use lib 'blib/lib';
 use Bio::HTSLib;
 
 plan 2;

@@ -4,7 +4,7 @@ module Bio::HTSLib::Library;
 
 use LibraryMake;
 
-sub library {
+our sub library {
     my $so = get-vars('')<SO>;
     for @*INC {
         if ($_~'/libhts'~$so).IO ~~ :f {
