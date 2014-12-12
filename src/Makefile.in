@@ -1,4 +1,5 @@
-all: libhts
+all: %DESTDIR%/libhts%SO%
 
-libhts: 
-	cd htslib; make
+%DESTDIR%/libhts%SO%: 
+	cd htslib; make; cp libhts%SO% %DESTDIR%/libhts%SO%
+
