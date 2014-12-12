@@ -2,7 +2,7 @@
     "name" : "Bio::HTSLib",
     "version" : "0.0.1",
     "description" : "Sugar-free NativeCall binding for htslib",
-    "depends" : [ "NativeCall" ],
+    "depends" : [ "NativeCall", "LibraryMake" ],
     "source-url" : "git://github.com/cjfields/p6-Bio-HTSLib",
     "author" : "cjfields"
 }
