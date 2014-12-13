@@ -6,4 +6,4 @@ use Bio::HTSLib;
 plan 2;
 
 ok my $lib = Bio::HTSLib.new(), 'module loads';
-ok $lib.install-library(), 'library called';
+lives_ok { $lib.install-library() }, 'installed libhts library found';
