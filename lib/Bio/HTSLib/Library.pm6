@@ -15,5 +15,5 @@ BEGIN {
         die "Unable to find libhts"~$so;
     }
     
-    our $LIBRARY = library()
+    our $HTSLIB is export = library()
 }
