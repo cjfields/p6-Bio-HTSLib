@@ -8,6 +8,6 @@ class Bio::HTSLib;
 use Bio::HTSLib::Library;
 
 method install-library {
-    return $Bio::HTSLib::Library::HTSLIB;
+    return $HTSLIB;
 }
     
