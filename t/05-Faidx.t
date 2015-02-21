@@ -24,8 +24,6 @@ for 0 .. $idx.num-seqs - 1 -> $index {
     ok($idx.seq-index($index), "seq-index: " ~ $idx.seq-index($index));
 }
 
-#TODO: add check for bounds to seq-index
-
 # These seqs are in the test file
 my %has = 'gi|209211|gb|L08752.1|SYNPUC18V' => 2686,
           'gi|208958|gb|J01749.1|SYNPBR322' => 4361,
@@ -40,11 +38,27 @@ for %has.kv -> $seqid, $seqdata {
 nok($idx.has-seq('gi|6691170|gb|M77789.2|SYNPUC19V'), 'has-seq: negative check');
 
 # get a sequence from the index
+my $seq1 = $idx.fetch-seq('gi|209211|gb|L08752.1|SYNPUC18V');
+is $seq1.chars, 2686, 'got sequence back';
 
-# get a subsequence from the index
+# get a subsequence from the index (0-based inclusive)
+my $seq2 = $idx.fetch-seq('gi|209211|gb|L08752.1|SYNPUC18V', :start(0), :end(99));
+is $seq2.chars, 100, 'got subsequence back';
+
+# get a sequence from the index using a region string (1-based)
+my $seq3 = $idx.fetch('gi|209211|gb|L08752.1|SYNPUC18V');
+is $seq3.chars, 2686, 'got sequence back';
+
+my $seq4 = $idx.fetch('gi|209211|gb|L08752.1|SYNPUC18V:1-100');
+is $seq4.chars, 100, 'got subsequence back';
+
+is($seq1, $seq3);
+
+is($seq2, $seq4);
+
+#TODO: add check for bounds to seq-index
 
 # delete the temp index file
-
 if $fasta-idx.IO ~~ :e {
     unlink $fasta-idx;
 }
