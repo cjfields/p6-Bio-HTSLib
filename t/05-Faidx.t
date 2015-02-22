@@ -10,8 +10,8 @@ my $fasta = $*SPEC.catdir('t', 'data', 'multi.fna');
 my $fasta-idx = $*SPEC.catdir('t', 'data', 'multi.fna.fai');
 
 # create a fai index
-is(fai_build($fasta), 0, 'build index using exported sub');
-ok($fasta-idx.IO ~~ :e);
+#is(fai_build($fasta), 0, 'build index using exported sub');
+#ok($fasta-idx.IO ~~ :e);
 
 # load index
 ok my $idx = Bio::HTSLib::Faidx.new($fasta), 'init fasta index';
@@ -52,9 +52,9 @@ is $seq3.chars, 2686, 'got sequence back';
 my $seq4 = $idx.fetch('gi|209211|gb|L08752.1|SYNPUC18V:1-100');
 is $seq4.chars, 100, 'got subsequence back';
 
-is($seq1, $seq3);
+is($seq1, $seq3, 'double check seqs match');
 
-is($seq2, $seq4);
+is($seq2, $seq4, 'double check seqs match');
 
 #TODO: add check for bounds to seq-index
 
