@@ -6,4 +6,6 @@ use Bio::HTSLib::BGZF;
 
 ok my $lib = Bio::HTSLib::BGZF.new(), 'module loads';
 
+# test reading
+
 done();
